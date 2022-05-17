@@ -1,30 +1,30 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>All Posts - 我的全新 Hugo 网站</title>
-        <link>https://koko-cyber.github.io/koko.github.io/posts/</link>
+        <link>https://koko-cyber.github.io/koko/posts/</link>
         <description>All Posts | 我的全新 Hugo 网站</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 17 May 2022 00:24:40 -0700</lastBuildDate><atom:link href="https://koko-cyber.github.io/koko.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 17 May 2022 00:24:40 -0700</lastBuildDate><atom:link href="https://koko-cyber.github.io/koko/posts/" rel="self" type="application/rss+xml" /><item>
     <title>REDEME1</title>
-    <link>https://koko-cyber.github.io/koko.github.io/posts/redeme1/</link>
+    <link>https://koko-cyber.github.io/koko/posts/redeme1/</link>
     <pubDate>Tue, 17 May 2022 00:24:40 -0700</pubDate>
     <author>koko</author>
-    <guid>https://koko-cyber.github.io/koko.github.io/posts/redeme1/</guid>
+    <guid>https://koko-cyber.github.io/koko/posts/redeme1/</guid>
     <description><![CDATA[]]></description>
 </item>
 <item>
     <title>Hook</title>
-    <link>https://koko-cyber.github.io/koko.github.io/posts/javascript_reverse/hook/</link>
+    <link>https://koko-cyber.github.io/koko/posts/javascript_reverse/hook/</link>
     <pubDate>Mon, 16 May 2022 20:43:03 -0700</pubDate>
     <author>koko</author>
-    <guid>https://koko-cyber.github.io/koko.github.io/posts/javascript_reverse/hook/</guid>
+    <guid>https://koko-cyber.github.io/koko/posts/javascript_reverse/hook/</guid>
     <description><![CDATA[hook 继承与原型链 - JavaScript | MDN (mozilla.org) this 指向问题：JS函数hook_愧怍小儿的博客-CSDN博客_hook js函数 函数 hook let btoa_bk = btoa; btoa = function(val){ console.log(val) debugger; return btoa_bk } (function () { function hook(object,]]></description>
 </item>
 <item>
     <title>JavaScript 逆向</title>
-    <link>https://koko-cyber.github.io/koko.github.io/posts/javascript_reverse/readme/</link>
+    <link>https://koko-cyber.github.io/koko/posts/javascript_reverse/readme/</link>
     <pubDate>Mon, 16 May 2022 20:43:03 -0700</pubDate>
     <author>koko</author>
-    <guid>https://koko-cyber.github.io/koko.github.io/posts/javascript_reverse/readme/</guid>
+    <guid>https://koko-cyber.github.io/koko/posts/javascript_reverse/readme/</guid>
     <description><![CDATA[JavaScript 逆向 😅😥👶😃🧥🐶🍏⚽️✂🈲🚗⌚️❤️🏁▶ 之学习总结 常见加密、解密、调试手段 API 参数加密 发起请求时会校验附带的参数，如 token、sign等 Cookie]]></description>
 </item>
 </channel>
