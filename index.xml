@@ -3,17 +3,9 @@
         <title>我的全新 Hugo 网站</title>
         <link>https://koko-cyber.github.io/koko/</link>
         <description>这是我的全新 Hugo 网站</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 17 May 2022 00:24:40 -0700</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 16 May 2022 20:43:03 -0700</lastBuildDate>
             <atom:link href="https://koko-cyber.github.io/koko/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>REDEME1</title>
-    <link>https://koko-cyber.github.io/koko/posts/redeme1/</link>
-    <pubDate>Tue, 17 May 2022 00:24:40 -0700</pubDate>
-    <author>koko</author>
-    <guid>https://koko-cyber.github.io/koko/posts/redeme1/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
     <title>Hook</title>
     <link>https://koko-cyber.github.io/koko/posts/javascript_reverse/hook/</link>
     <pubDate>Mon, 16 May 2022 20:43:03 -0700</pubDate>
