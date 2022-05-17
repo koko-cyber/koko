@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>JavaScript 逆向 - 我的全新 Hugo 网站</title><meta name="Description" content="这是我的全新 Hugo 网站"><meta property="og:title" content="JavaScript 逆向" />
+<meta property="og:description" content="JavaScript 逆向 😅😥👶😃🧥🐶🍏⚽️✂🈲🚗⌚️❤️🏁▶ 之学习总结 常见加密、解密、调试手段 API 参数加密 发起请求时会校验附带的参数，如 token、sign等 Cookie" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://koko-cyber.github.io/koko.github.io/posts/javascript_reverse/readme/" /><meta property="og:image" content="https://koko-cyber.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-16T20:43:03-07:00" />
+<meta property="article:modified_time" content="2022-05-16T20:43:03-07:00" /><meta property="og:site_name" content="我的网站" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://koko-cyber.github.io/logo.png"/>
+
+<meta name="twitter:title" content="JavaScript 逆向"/>
+<meta name="twitter:description" content="JavaScript 逆向 😅😥👶😃🧥🐶🍏⚽️✂🈲🚗⌚️❤️🏁▶ 之学习总结 常见加密、解密、调试手段 API 参数加密 发起请求时会校验附带的参数，如 token、sign等 Cookie"/>
+<meta name="application-name" content="我的网站">
+<meta name="apple-mobile-web-app-title" content="我的网站"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://koko-cyber.github.io/koko.github.io/posts/javascript_reverse/readme/" /><link rel="next" href="https://koko-cyber.github.io/koko.github.io/posts/javascript_reverse/hook/" /><link rel="stylesheet" href="/koko.github.io/css/style.min.css"><link rel="preload" href="/koko.github.io/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/koko.github.io/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/koko.github.io/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/koko.github.io/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "JavaScript 逆向",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/koko-cyber.github.io\/koko.github.io\/posts\/javascript_reverse\/readme\/"
+        },"genre": "posts","wordcount":  2007 ,
+        "url": "https:\/\/koko-cyber.github.io\/koko.github.io\/posts\/javascript_reverse\/readme\/","datePublished": "2022-05-16T20:43:03-07:00","dateModified": "2022-05-16T20:43:03-07:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "koko"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/koko.github.io/" title="我的全新 Hugo 网站"></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/koko.github.io/koko.github.io/posts/"> 文章 </a><a class="menu-item" href="/koko.github.io/koko.github.io/tags/"> 标签 </a><a class="menu-item" href="/koko.github.io/koko.github.io/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/koko.github.io/" title="我的全新 Hugo 网站"></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/koko.github.io/koko.github.io/posts/" title="">文章</a><a class="menu-item" href="/koko.github.io/koko.github.io/tags/" title="">标签</a><a class="menu-item" href="/koko.github.io/koko.github.io/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">JavaScript 逆向</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/koko.github.io/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>koko</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2022-05-16">2022-05-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2007 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#常见加密解密调试手段">常见加密、解密、调试手段</a></li>
+    <li><a href="#ob-混淆篇">ob 混淆篇</a></li>
+    <li><a href="#webpack-篇">webpack 篇</a></li>
+    <li><a href="#worker-多线程调试篇">worker 多线程调试篇</a></li>
+    <li><a href="#jsl-加速乐篇">JSL 加速乐篇</a></li>
+    <li><a href="#sojson-篇">sojson 篇</a></li>
+    <li><a href="#async-异步篇">async 异步篇</a></li>
+    <li><a href="#tls-指纹">TLS 指纹</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="javascript-逆向">JavaScript 逆向</h1>
+<p>😅😥👶😃🧥🐶🍏⚽️✂🈲🚗⌚️❤️🏁▶ 之学习总结</p>
+<!-- raw HTML omitted -->
+<h2 id="常见加密解密调试手段">常见加密、解密、调试手段</h2>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p>API 参数加密 发起请求时会校验附带的参数，如 token、sign等</p>
+</li>
+<li>
+<p>Cookie 参数解密 cookie 由 JavaScript 动态生成</p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> 加密</p>
+<ul>
+<li>
+<p><i class="far fa-check-square fa-fw" aria-hidden="true"></i> <a href="https://github.com/koko-cyber/JavaScript_Reverse#ob-%E6%B7%B7%E6%B7%86%E7%AF%87" target="_blank" rel="noopener noreffer">ob 混淆</a></p>
+</li>
+<li>
+<p><i class="far fa-check-square fa-fw" aria-hidden="true"></i> <a href="https://github.com/koko-cyber/JavaScript_Reverse#webpack-%E7%AF%87" target="_blank" rel="noopener noreffer">webpack</a></p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> worker</p>
+</li>
+<li>
+<p><i class="far fa-check-square fa-fw" aria-hidden="true"></i> <a href="https://github.com/koko-cyber/JavaScript_Reverse#async-%E5%BC%82%E6%AD%A5%E7%AF%87" target="_blank" rel="noopener noreffer">async：异步调试</a></p>
+</li>
+<li>
+<p><i class="far fa-check-square fa-fw" aria-hidden="true"></i> <a href="https://github.com/koko-cyber/JavaScript_Reverse#jsl-%E5%8A%A0%E9%80%9F%E4%B9%90%E7%AF%87" target="_blank" rel="noopener noreffer">jsl 加速乐</a></p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> <a href="https://github.com/koko-cyber/JavaScript_Reverse#sojson-%E7%AF%87" target="_blank" rel="noopener noreffer">sojsonv6</a></p>
+</li>
+<li>
+<p><i class="far fa-check-square fa-fw" aria-hidden="true"></i> <a href="https://github.com/koko-cyber/JavaScript_Reverse#tls-%E6%8C%87%E7%BA%B9" target="_blank" rel="noopener noreffer">TLS 指纹</a></p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> protobuf</p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> jsvmp</p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> wasm</p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> 瑞数</p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> 文字验证码</p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> 顶象</p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> 极验</p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> 数美</p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> 网易易盾</p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> 5秒盾</p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> akamai</p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> 谷歌验证码</p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> 字体反爬</p>
+</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> 解密</p>
+<ul>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> <a href="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/hook.md" target="_blank" rel="noopener noreffer">hook</a></p>
+</li>
+<li>
+<p><i class="far fa-square fa-fw" aria-hidden="true"></i> AST</p>
+</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="ob-混淆篇">ob 混淆篇</h2>
+<p>官网：https://obfuscator.io/</p>
+<p>ob 混淆是常见的一种混淆方式，关于介绍可以去百度或者官网了解</p>
+<!-- raw HTML omitted -->
+<p>混淆前</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">hi</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&#34;Hello World!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nx">hi</span><span class="p">();</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<p>混淆后部分截图</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220421205700908.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220421205700908.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220421205700908.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220421205700908.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220421205700908.png?raw=true"
+        title="image" /></p>
+<!-- raw HTML omitted -->
+<p>如果是利用开源库进行混淆的 JS 可以用下面解混淆</p>
+<p><a href="https://github.com/Tsaiboss/decodeObfuscator" target="_blank" rel="noopener noreffer">Tsaiboss/decodeObfuscator: 免安装一键还原Obfuscator混淆过的代码 (github.com)</a></p>
+<!-- raw HTML omitted -->
+<p>也可以利自行编写 AST 代码，这里暂时不展开讨论</p>
+<!-- raw HTML omitted -->
+<p>ob混淆案例网址：<a href="https://jobs.51job.com/" target="_blank" rel="noopener noreffer">51job、前程无忧</a></p>
+<p>此网址的 cookie 设置了有效时间，打上 script 断点后很容易找到生成 cookie 的函数入口</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422141408444.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422141408444.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422141408444.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422141408444.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422141408444.png?raw=true"
+        title="image" /></p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422141952842.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422141952842.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422141952842.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422141952842.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422141952842.png?raw=true"
+        title="image" /></p>
+<!-- raw HTML omitted -->
+<p>可以发现 name 是一个固定的字符串我们可以定死，而 x 参数通过堆栈中得知 x = arg2</p>
+<p>arg2 由 _0x23a392 得来，arg1 参数是由服务器发的固定字符串</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422142442341.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422142442341.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422142442341.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422142442341.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422142442341.png?raw=true"
+        title="image" /></p>
+<!-- raw HTML omitted -->
+<p>为了方便我们看代码我们可以利用 decodeObfuscator 解混淆，解混淆前后</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422142832558.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422142832558.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422142832558.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422142832558.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422142832558.png?raw=true"
+        title="image" /></p>
+<!-- raw HTML omitted -->
+<p>我们可以更清楚的去分析函数之间的关系</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422142955089.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422142955089.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422142955089.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422142955089.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422142955089.png?raw=true"
+        title="image" /></p>
+<!-- raw HTML omitted -->
+<p>分析结束后就是扣代码的流程了，这里就不多赘述了，直接贴上运行结果</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422143355073.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422143355073.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422143355073.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422143355073.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422143355073.png?raw=true"
+        title="image" /></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="webpack-篇">webpack 篇</h2>
+<!-- raw HTML omitted -->
+<p>webpack 是前端打包常用手段，并不是加密手段，只是经过 webpack 打包的 js 对逆向有一定的影响</p>
+<p>中文官网：<a href="https://www.webpackjs.com/concepts/" target="_blank" rel="noopener noreffer">概念 | webpack 中文网 (webpackjs.com)</a></p>
+<!-- raw HTML omitted -->
+<p>webpack 标识</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">!</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//分发器
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kd">function</span> <span class="nx">u</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">.....</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">e</span><span class="p">[</span><span class="nx">n</span><span class="p">].</span><span class="nx">call</span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">exports</span><span class="p">,</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">t</span><span class="p">.</span><span class="nx">exports</span><span class="p">,</span> <span class="nx">u</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nx">l</span> <span class="o">=</span> <span class="o">!</span><span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nx">exports</span>
+</span></span><span class="line"><span class="cl"><span class="p">}({</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// 模块
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="s1">&#39;test&#39;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){},</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}));</span>
+</span></span></code></pre></div><!-- raw HTML omitted -->
+<p>经过 webpack 打包的代码一般长这样，由分发器和待加载的模块组成</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422150332156.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422150332156.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422150332156.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422150332156.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422150332156.png?raw=true"
+        title="image" /></p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>案例网址：<a href="https://spa6.scrape.center/" target="_blank" rel="noopener noreffer">Scrape | Movie</a></p>
+<p>通过抓包发现，数据接口由 token 值是经过加密的</p>
+<!-- raw HTML omitted -->
+<p>经过查找堆栈可以发现加密函数入口，我们在此处下断点刷新页面，断住后单步调试跟进去</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422151257413.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422151257413.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422151257413.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422151257413.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422151257413.png?raw=true"
+        title="image" /></p>
+<!-- raw HTML omitted -->
+<p>跟进去后我们就可以找到该分发器，然后将该分发器导出方便我们使用里面的模块</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422151429261.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422151429261.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422151429261.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422151429261.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422151429261.png?raw=true"
+        title="image" /></p>
+<p>扣下来，将其他无用的函数注释掉，定义一个 window（当然什么变量都行只是我习惯了）</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">var</span> <span class="nb">window</span> <span class="o">=</span> <span class="nx">global</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">window</span><span class="p">.</span><span class="nx">_0x3ff111_</span> <span class="o">=</span> <span class="nx">_0x3ff111</span><span class="p">;</span>  <span class="c1">//将分发器导出
+</span></span></span></code></pre></div><!-- raw HTML omitted -->
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422151555774.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422151555774.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422151555774.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422151555774.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422151555774.png?raw=true"
+        title="image-20220422151555774" /></p>
+<!-- raw HTML omitted -->
+<p>扣完后可以测试一下该分发器有没有效果</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422153622477.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422153622477.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422153622477.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422153622477.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422153622477.png?raw=true"
+        title="image-20220422153622477" /></p>
+<!-- raw HTML omitted -->
+<p>接下来就是扣加密所需的模块了</p>
+<p>比如在控制台输出 _0x2fa7bd[&lsquo;a&rsquo;] 发现是这个函数，它所在的模块是 ‘7d92’</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422152051489.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422152051489.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422152051489.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422152051489.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422152051489.png?raw=true"
+        title="image-20220422152051489" /></p>
+<p>将他整个扣下来，缺什么模块就扣什么</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422152615458.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422152615458.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422152615458.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422152615458.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422152615458.png?raw=true"
+        title="image" /></p>
+<!-- raw HTML omitted -->
+<p>也可以直接全部复制下来，建议用到什么模块就扣什么模块。我偷个懒</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422153847349.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422153847349.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422153847349.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422153847349.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422153847349.png?raw=true"
+        title="image-20220422153847349" /></p>
+<!-- raw HTML omitted -->
+<p>调用模块还原加密逻辑</p>
+<p>_0x2fa7bd 是由 &ldquo;7d92&rdquo; 模块加载来的</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422154051923.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422154051923.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422154051923.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422154051923.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220422154051923.png?raw=true"
+        title="image" /></p>
+<h2 id="worker-多线程调试篇">worker 多线程调试篇</h2>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="jsl-加速乐篇">JSL 加速乐篇</h2>
+<!-- raw HTML omitted -->
+<p>案例网址：<a href="https://www.cnvd.org.cn/" target="_blank" rel="noopener noreffer">国家信息安全漏洞共享平台</a></p>
+<!-- raw HTML omitted -->
+<p>老规矩先抓包，看一下它是怎么一个操作</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426095248452.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426095248452.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426095248452.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426095248452.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426095248452.png?raw=true"
+        title="image-20220426095248452" /></p>
+<!-- raw HTML omitted -->
+<p>可以看到他是发送了三次请求才返回正常的页面，第一次请求 Set-Cookie: __jsluid_s ，经过第一次请求后，第二次请求带着第一次请求的 set-cookie 和加密出来的 __jsl_clearance_s 发送请求，最后一次请求带着再一次加密过后的 __jsl_clearance_s 返回要采集的数据</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426095820587.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426095820587.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426095820587.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426095820587.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426095820587.png?raw=true"
+        title="image-20220426095820587" /></p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426095744498.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426095744498.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426095744498.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426095744498.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426095744498.png?raw=true"
+        title="image-20220426095744498" /></p>
+<!-- raw HTML omitted -->
+<p>ok，我们打上 script 断点然后刷新页面</p>
+<p>可以看见第一次请求 set-cookie 后会返回这一串 js 代码，发现这就是我们要找的 __jsl_clearance_s</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426100845761.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426100845761.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426100845761.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426100845761.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426100845761.png?raw=true"
+        title="image-20220426100845761" /></p>
+<!-- raw HTML omitted -->
+<p>我们继续步进，发现第二次 __jsl_clearance_s 的加密逻辑，这是一个经过 ob 混淆的加密代码，我们可以通过hook 或者解混淆来找到入口函数，由于这个混淆度比较低直接就能看出来set cookie 的位置</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426101226400.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426101226400.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426101226400.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426101226400.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426101226400.png?raw=true"
+        title="image-20220426101226400" /></p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426101305880.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426101305880.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426101305880.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426101305880.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426101305880.png?raw=true"
+        title="image-20220426101305880" /></p>
+<p><!-- raw HTML omitted --></p>
+<p>多调试几次就会发现它每次加密 __jsl_clearance_s 的加密算法不同，分别是 sha1 sha256 md5，需要把这三个文件抓出来，然后就可以进行扣代码了</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426101615392.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426101615392.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426101615392.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426101615392.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426101615392.png?raw=true"
+        title="image-20220426101615392" /></p>
+<!-- raw HTML omitted -->
+<h2 id="sojson-篇">sojson 篇</h2>
+<!-- raw HTML omitted -->
+<p>sojsonv6 加密网址：https://www.jsjiami.com/</p>
+<p>sojsonv6：sojsonv6调试案例 <a href="http://www.pbc.gov.cn/" target="_blank" rel="noopener noreffer">中国人民银行</a></p>
+<!-- raw HTML omitted -->
+<p>通过第一次请求 set_cookie 了一个 <strong>wzws_cid</strong>，返回一串经过 sojsonv6 加密的 js</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426103746779.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426103746779.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426103746779.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426103746779.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426103746779.png?raw=true"
+        title="image-20220426103746779" /></p>
+<p>然后经过加密后带上 wzwschallenge 参数和 wzws_cid 这个cookie 在请求一次，然后又 set_cookie 了 wzws_cid</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426104205009.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426104205009.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426104205009.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426104205009.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426104205009.png?raw=true"
+        title="image-20220426104205009" /></p>
+<p>把 cookie 清空打上 script 断点，可以发现有这个明显的特征，这个文件就是加密 wzwschallenge 的文件</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426102834476.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426102834476.png?raw=true, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426102834476.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426102834476.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript_Reverse/blob/main/picture/image-20220426102834476.png?raw=true"
+        title="image-20220426102834476" /></p>
+<!-- raw HTML omitted -->
+<h2 id="async-异步篇">async 异步篇</h2>
+<!-- raw HTML omitted -->
+<p>异步调试，不知道有没有 js 异步调试技巧的文章分享一下&hellip; (待补充)</p>
+<!-- raw HTML omitted -->
+<p>async：异步调试案例 aHR0cHM6Ly9tdXNpYy4xNjMuY29tLw==</p>
+<!-- raw HTML omitted -->
+<p>登录（手机号-密码）：加密参数 encSecKey parmas</p>
+<!-- raw HTML omitted -->
+<p>分析思路：输入手机号、密码、点击登录</p>
+<!-- raw HTML omitted -->
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421141420597.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421141420597.png?raw=true, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421141420597.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421141420597.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421141420597.png?raw=true"
+        title="image-20220421141420597.png" /></p>
+<p>可以看见该 post 请求下面有两个加密参数 <strong>params</strong> 和 <strong>encSecKey</strong></p>
+<!-- raw HTML omitted -->
+<p>查看堆栈打上断点进入调试</p>
+<!-- raw HTML omitted -->
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421143552838.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421143552838.png?raw=true, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421143552838.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421143552838.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421143552838.png?raw=true"
+        title="image" /></p>
+<!-- raw HTML omitted -->
+<p>打上断点之后我们可以看见参数 <strong>d</strong></p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421142136225.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421142136225.png?raw=true, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421142136225.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421142136225.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421142136225.png?raw=true"
+        title="image" /></p>
+<!-- raw HTML omitted -->
+<p>通过观察可以发现 <strong>d</strong> 这个参数是 <strong>b</strong> 这个包的加密参数 <strong>d</strong></p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421142711181.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421142711181.png?raw=true, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421142711181.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421142711181.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421142711181.png?raw=true"
+        title="image" /></p>
+<!-- raw HTML omitted -->
+<p>点击该按钮跳过该断点时出现 <strong>params</strong></p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421144011047.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421144011047.png?raw=true, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421144011047.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421144011047.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421144011047.png?raw=true"
+        title="image" /></p>
+<p>然后我们查看堆栈，发现在进入这个 <strong>g.asrsea</strong> 这个函数时 <strong>params</strong> 参数生成</p>
+<p>且 <strong>g.asrsea</strong> 这个函数传入 <strong>f</strong> 这个值，<strong>f</strong> 里面包含了 手机号、密码、和一个 <strong>checktoken</strong> 这几个关键信息</p>
+<!-- raw HTML omitted -->
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421144817135.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421144817135.png?raw=true, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421144817135.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421144817135.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421144817135.png?raw=true"
+        title="image" /></p>
+<!-- raw HTML omitted -->
+<p>单步调试跟进去，发现加密函数，此时 password 和 checktoken 是未知的</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421145238863.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421145238863.png?raw=true, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421145238863.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421145238863.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421145238863.png?raw=true"
+        title="image" /></p>
+<p>重新点击登录，重新打上断点，刚刚我们是在 <strong>f</strong> 这里我们继续往下看，找到 checktoken 和 password 的生成方式</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421150034193.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421150034193.png?raw=true, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421150034193.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421150034193.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421150034193.png?raw=true"
+        title="image" /></p>
+<!-- raw HTML omitted -->
+<p>当我们找到 <strong>m.ia</strong> 时我们可以看到 <strong>checktoken</strong> 是 <strong>dc</strong> 这个函数通过 <strong>r</strong> 和 <strong>x</strong> 参数加密得来</p>
+<!-- raw HTML omitted -->
+<p>而 <strong>r</strong> 参数 由 <strong>bc</strong> 这个函数得来，至此就差 <strong>password</strong> 加密了</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421151105878.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421151105878.png?raw=true, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421151105878.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421151105878.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421151105878.png?raw=true"
+        title="image" /></p>
+<!-- raw HTML omitted -->
+<p>和上面一样继续找堆栈就可以发现 <strong>password</strong> 是由 MD5 加密得来</p>
+<p><img
+        class="lazyload"
+        src="/koko.github.io/svg/loading.min.svg"
+        data-src="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421151704924.png?raw=true"
+        data-srcset="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421151704924.png?raw=true, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421151704924.png?raw=true 1.5x, https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421151704924.png?raw=true 2x"
+        data-sizes="auto"
+        alt="https://github.com/koko-cyber/JavaScript---/blob/main/picture/image-20220421151704924.png?raw=true"
+        title="image" /></p>
+<h2 id="tls-指纹">TLS 指纹</h2>
+<!-- raw HTML omitted -->
+<p>TLS 及其前身 SSL 用于为常见应用程序和恶意软件加密通信，以确保数据安全，因此可以隐藏在噪音中。要启动</p>
+<p>TLS 会话，客户端将在 TCP 3 次握手之后发送 TLS 客户端 Hello 数据包。此数据包及其生成方式取决于构建客户</p>
+<p>端应用程序时使用的包和方法。服务器如果接受 TLS 连接，将使用基于服务器端库和配置以及 Client Hello 中的详</p>
+<p>细信息制定的 TLS Server Hello 数据包进行响应。由于 TLS 协商以明文形式传输，因此可以使用 TLS Client Hello</p>
+<p>数据包中的详细信息来指纹和识别客户端应用程序</p>
+<!-- raw HTML omitted -->
+<p>ja3：<a href="https://github.com/salesforce/ja3" target="_blank" rel="noopener noreffer">JA3 is a standard for creating SSL client fingerprints in an easy to produce and shareable way</a></p>
+<p><a href="https://engineering.salesforce.com/tls-fingerprinting-with-ja3-and-ja3s-247362855967" target="_blank" rel="noopener noreffer">TLS Fingerprinting with JA3 and JA3S | by John Althouse | Salesforce Engineering</a></p>
+<!-- raw HTML omitted -->
+<p>推荐文章：<a href="https://mp.weixin.qq.com/s/-i730kN_f5sIvh6kj7k5JQ" target="_blank" rel="noopener noreffer">深度剖析ja3指纹及突破</a>  大佬文章里说的很详细</p>
+<p><a href="https://mp.weixin.qq.com/s/oHAaCICxUAAxKsT4tul5Sw" target="_blank" rel="noopener noreffer">ja3指纹补充说明</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2022-05-16</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://koko-cyber.github.io/koko.github.io/posts/javascript_reverse/readme/" data-title="JavaScript 逆向"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://koko-cyber.github.io/koko.github.io/posts/javascript_reverse/readme/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://koko-cyber.github.io/koko.github.io/posts/javascript_reverse/readme/" data-title="JavaScript 逆向"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://koko-cyber.github.io/koko.github.io/posts/javascript_reverse/readme/" data-title="JavaScript 逆向"><i data-svg-src="/koko.github.io/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://koko-cyber.github.io/koko.github.io/posts/javascript_reverse/readme/" data-title="JavaScript 逆向"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/koko.github.io/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/koko.github.io/posts/javascript_reverse/hook/" class="next" rel="next" title="Hook">Hook<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.99.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/koko.github.io/" target="_blank">koko</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/koko.github.io/lib/katex/katex.min.css"><link rel="stylesheet" href="/koko.github.io/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/koko.github.io/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/koko.github.io/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/koko.github.io/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/koko.github.io/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/koko.github.io/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/koko.github.io/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/koko.github.io/lib/katex/katex.min.js"></script><script type="text/javascript" src="/koko.github.io/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/koko.github.io/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/koko.github.io/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/koko.github.io/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/koko.github.io/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/koko.github.io/js/theme.min.js"></script></body>
+</html>
